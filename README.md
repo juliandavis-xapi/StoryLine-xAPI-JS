@@ -27,7 +27,7 @@ Where function parameters are:
 
 
 
-Follow these steps after building you StoryLine course
+Follow these steps after building your StoryLine course
 
 Add to the *_lms.html file
 
