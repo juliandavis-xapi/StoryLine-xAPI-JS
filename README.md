@@ -44,12 +44,12 @@ Add to the *_lms.html file
 	<script src="js/xapi_web.js" type="text/javascript"></script>
 <!-- End Custm xAPI code-->	
 
-Add to the imsmanifest.xml file (may have to view code to see this)
-<!-- Start custom xAPI files-->	
-\ <file href="js/config.json" />
-\ <file href="js/xapi_verbs.js" />
-\ <file href="js/xapi_activities.js" />
-\ <file href="js/xapi_web.js" />
-\ <file href="js/xapi/xapiwrapper.js"/>
-\ <file href="js/xapi/cryptojs_v3.1.2.js"/>
-<!-- Start custom xAPI files -->	
+Add to the imsmanifest.xml filem but close the comments
+<!-- Start custom xAPI files 
+ <file href="js/config.json" />
+ <file href="js/xapi_verbs.js" />
+ <file href="js/xapi_activities.js" />
+ <file href="js/xapi_web.js" />
+ <file href="js/xapi/xapiwrapper.js"/>
+ <file href="js/xapi/cryptojs_v3.1.2.js"/>
+End custom xAPI files -->	
