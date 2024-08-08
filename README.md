@@ -44,7 +44,7 @@ Add to the *_lms.html file
 	<script src="js/xapi_web.js" type="text/javascript"></script>
 <!-- End Custm xAPI code-->	
 
-Add to the imsmanifest.xml filem but close the comments
+Add to the imsmanifest.xml file. Note you may need to remove the space between < and file 
 <!-- Start custom xAPI files -->
  <file href="js/config.json" />
  
