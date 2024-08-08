@@ -17,15 +17,15 @@ xapistatement('answered','question','the x in xAPI stands for experience','',tru
 where function parameters are
 
 Builds and sends the xAPI Statement to the LRS
-verb (String) - from the select list of verbs set out in xapi_adl.js
-activitytype (String) - from the list in xapi_actvitytype.js
-shortdesc (String) - Short description of expirience
-longdesc (String) - A more detailed description of experience, can be empty
-showresult (bool) - include the result 
-completion (bool) - sets the completion of the result object **must be used if showresult is true**
-success (bool) - sets the success of the result object **must be used if showresult is true**
-score (int) - sets the raw score of the result **must be used if showresult is true**
-response (string) - the answer the to question **must be used if showresult is true**
+- verb (String) - from the select list of verbs set out in xapi_adl.js
+- activitytype (String) - from the list in xapi_actvitytype.js
+- shortdesc (String) - Short description of expirience
+- longdesc (String) - A more detailed description of experience, can be empty
+- showresult (bool) - include the result 
+- completion (bool) - sets the completion of the result object **must be used if showresult is true**
+- success (bool) - sets the success of the result object **must be used if showresult is true**
+- score (int) - sets the raw score of the result **must be used if showresult is true**
+- response (string) - the answer the to question **must be used if showresult is true**
 
 
 
