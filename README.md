@@ -2,11 +2,9 @@ August 2024
 
 
 
-Must update the config.json to reflect the link to LRS ***
+Must update the config.json to reflect the link to LRS 
 
-To add xAPI to StoryLine, add a trigger in StoryLine based on the following:
-
-Add function
+To add xAPI to StoryLine, add a trigger in StoryLine based on the following function
 
 //Basic
 xapistatement('viewed','interaction', 'Introduction');
@@ -36,7 +34,7 @@ Follow these steps after building you StoryLine course
 Add to the *_lms.html file
 
 <!-- Start custom xAPI code-->	
-	<script src="js/config.json" type="text/javascript"></script>
+	<script src="js/config.js" type="text/javascript"></script>
 	<script src="js/xapi/cryptojs_v3.1.2.js" type="text/javascript"></script>
 	<script src="js/xapi/xapiwrapper.js" type="text/javascript"></script>
 	<script src="js/xapi_activities.js" type="text/javascript"></script>
@@ -46,7 +44,7 @@ Add to the *_lms.html file
 
 Add to the imsmanifest.xml file. Note you may need to remove the space between < and file 
 <!-- Start custom xAPI files -->
- <file href="js/config.json" />
+ < file href="js/config.js" />
  
  < file href="js/xapi_verbs.js" />
  
