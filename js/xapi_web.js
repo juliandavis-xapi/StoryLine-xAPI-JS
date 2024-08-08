@@ -10,11 +10,6 @@ You will need to change:
 
 
 
-
-
-
-
-
 var authkey = "Basic " + lrsData.authkey;
 var endpoint = lrsData.endpoint;
 var theLaunchURL = lrsData.theLaunchURL;
@@ -34,90 +29,7 @@ ADL.XAPIWrapper.changeConfig(conf);
 
 }
 
-function initializeSCORM() {
-  scormAPI = getAPI();
-  if (scormAPI == null) {
-      scormAPI = getAPI2004();
-  }
 
-  if (scormAPI == null) {
-      console.log("SCORM API not found");
-      return false;
-  }
-
-  var result;
-  if (typeof scormAPI.LMSInitialize !== "undefined") {
-      result = scormAPI.LMSInitialize("");
-  } else if (typeof scormAPI.Initialize !== "undefined") {
-      result = scormAPI.Initialize("");
-  }
-  return (result === "true" || result === true);
-}
-
-
-function getLearnerEmail() {
-  var learnerEmail = null;
-
-  if (initializeSCORM()) {
-      if (typeof scormAPI.GetValue !== "undefined") {
-          // SCORM 2004
-          learnerEmail = scormAPI.GetValue("cmi.learner_id");
-          
-      } else if (typeof scormAPI.LMSGetValue !== "undefined") {
-          // SCORM 1.2 (Note: No direct email retrieval in SCORM 1.2)
-          var learnerID = scormAPI.LMSGetValue("cmi.core.student_id");
-          console.log("Learner ID: " + learnerID);
-          // You need a custom method to map learnerID to email
-      }
-  } else {
-      console.log("Failed to initialize SCORM");
-  }
-  return learnerEmail;
-}
-
-
-
-var scormAPI = null;
-
-function findAPI(win) {
-    var attempts = 0;
-    while ((win.API == null) && (win.parent != null) && (win.parent != win)) {
-        attempts++;
-        if (attempts > 500) {
-            return null;
-        }
-        win = win.parent;
-    }
-    return win.API;
-}
-
-function findAPI2004(win) {
-    var attempts = 0;
-    while ((win.API_1484_11 == null) && (win.parent != null) && (win.parent != win)) {
-        attempts++;
-        if (attempts > 500) {
-            return null;
-        }
-        win = win.parent;
-    }
-    return win.API_1484_11;
-}
-
-function getAPI() {
-    var theAPI = findAPI(window);
-    if ((theAPI == null) && (window.opener != null) && (typeof(window.opener) != "undefined")) {
-        theAPI = findAPI(window.opener);
-    }
-    return theAPI;
-}
-
-function getAPI2004() {
-    var theAPI = findAPI2004(window);
-    if ((theAPI == null) && (window.opener != null) && (typeof(window.opener) != "undefined")) {
-        theAPI = findAPI2004(window.opener);
-    }
-    return theAPI;
-}
 
 
 /* Sends an attachment to the LRS linked to a User and a Course */
@@ -127,8 +39,7 @@ function sendxAPI(verb,activitytype,shortdesc,longdesc,showresult,completion,suc
 
   var name = 'User, Unknown'; //Set a dummy value just incase
   name = SCORM2004_GetStudentName();    //try and get the student name from the SCORM object
-  var email = getLearnerEmail(); 
-  
+   
     
 var player = GetPlayer();
 //get the StoryLine object to get any variables 	
@@ -146,18 +57,9 @@ activityid = uActivityid+'?&ac='+shortdesc.replace(/ /g,"+");
 var result = [];	    
 
 
-var ObjDescript = "";
-var desc = "";
-if(longdesc != "" || longdesc != 'undefined'){
-  ObjDescript = {
-  description:{
-  'en-US': longdesc  
-}
- }; 
  
- desc= JSON.stringify(ObjDescript);
-}
-    
+
+   // SCORM doesn't get email well, so use the HomePage and Name as the Agent 
   var stmt = {
   actor: {
       objectType: 'Agent',
@@ -176,9 +78,12 @@ if(longdesc != "" || longdesc != 'undefined'){
         name: {
           'en-US': shortdesc
         },
-       
-      }
-    },
+        description:{
+          'en-US': longdesc  
+        }
+         }
+      },
+  
     
     context: {
       registration: generateUUID(),
@@ -259,10 +164,10 @@ if(longdesc != "" || longdesc != 'undefined'){
 // xAPI Statements - don't touch this or anything below here :) !
 /*
 * Builds and sends the xAPI Statement to the LRS
-* verb (String) - from the select list of verbs set out in xapi_adl.js
-* activitytype (String) - from the list in xapi_actvitytype.js
-* shortdesc (String) - Short description of expirience
-* longdesc (String) - A more detailed description of expirence
+* verb (String) - from the select list of verbs set out in xapi_adl.js -> REQUIRED
+* activitytype (String) - from the list in xapi_actvitytype.js -> REQUIRED
+* shortdesc (String) - Short description of experience -> REQUIRED
+* longdesc (String) - A more detailed description of experience
 * showresult (bool) - include the result 
 * completion (bool) - sets the completion of the result object **must be used if showresult is true**
 * success (bool) - sets the success of the result object **must be used if showresult is true**
@@ -286,12 +191,7 @@ function xapistatement(verb,activitytype,shortdesc,longdesc,showresult,completio
 
 /****************** Helper functions************************/
 
-function viewxAPIStatements(){
-	
-	window.open('view_my_statements.html?email='+email);
-	
-	
-}
+
 
 function getQueryVariable(variable) {
 
@@ -366,7 +266,7 @@ function getURLQS(){
 
 
 /* These 2 functions are used to calculate the Next and previous slide numbers
- * To add to the Activity Desription
+ * To add to the Activity Description
  */
 function getNextSlide(){
 
@@ -414,6 +314,7 @@ function buildEmail(studentName){
 } 
 
 
+/* get the Browser details for the Browser Extension in the xAPI Statement */
 
 function GetBrowser()
 {
