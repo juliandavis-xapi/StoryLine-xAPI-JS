@@ -46,7 +46,7 @@ Add to the *_lms.html file
 
 Add to the imsmanifest.xml filem but close the comments
 <!-- Start custom xAPI files -->
- <file href="js/config.json" ></file>
+ <file href="js/config.json" />
  
  < file href="js/xapi_verbs.js" />
  
