@@ -14,9 +14,7 @@ xapistatement('viewed','interaction', 'Introduction');
 xapistatement('answered','question','the x in xAPI stands for experience','',true,false,true,0,'true');
 
 
-where function parameters are
-
-Builds and sends the xAPI Statement to the LRS
+Where function parameters are:
 - verb (String) - from the select list of verbs set out in xapi_adl.js
 - activitytype (String) - from the list in xapi_actvitytype.js
 - shortdesc (String) - Short description of expirience
