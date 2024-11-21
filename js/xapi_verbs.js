@@ -138,6 +138,15 @@
 
     },
 
+   "left" : {
+
+       "id" : " http://activitystrea.ms/schema/1.0/leave",
+
+       "display" : {"en-US" : "left"}
+
+    },
+	 
+
     "mastered" : {
 
        "id" : "http://adlnet.gov/expapi/verbs/mastered",
