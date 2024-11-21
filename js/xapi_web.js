@@ -2,15 +2,15 @@
 /*************************************\
 xAPI Launcher - this is used to launch the xAPI with all the details for creating our statements
 You will need to change:
-- auth to your auth in Learning locker (authkey)
-- the path to Learning Locker (lrs) 
+- auth to your auth in LRS (authkey)
+- the path to the LRS
 - the launch url for the module which is Articulate or Captivate (theLaunchURL)
 /*************************************/
 
 
 
 
-var authkey = "Basic " + lrsData.authkey;
+var authkey = "Basic " + toBase64(lrsData.authkey);
 var endpoint = lrsData.endpoint;
 var theLaunchURL = lrsData.theLaunchURL;
 var activityID = lrsData.activityID;
