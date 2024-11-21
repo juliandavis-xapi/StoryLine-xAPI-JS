@@ -57,6 +57,9 @@
     ,
 	   //Interaction activities of "cmi.interaction" type as defined in the SCORM 2004 4th Edition Run-Time Environment.
 	  "cmi" :  "http://adlnet.gov/expapi/activities/cmi.interaction"
+	   ,
+	   //Represents an area, typically a web page, that is representative of, and generally managed by a particular entity. Such areas are usually dedicated to displaying descriptive information about the entity and showcasing recent content such as articles, photographs and videos. Most social networking applications, for example, provide individual users with their own dedicated "profile" pages. Several allow similar types of pages to be created for commercial entities, organizations or events. While the specific details of how pages are implemented, their characteristics and use may vary, the one unifying property is that they are typically "owned" by a single entity that is represented by the content provided by the page itself.
+	  "page" :  "http://activitystrea.ms/schema/1.0/page"
   };
 
 }(window.ADL = window.ADL || {}));
