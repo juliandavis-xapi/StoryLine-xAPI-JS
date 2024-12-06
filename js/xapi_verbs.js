@@ -140,7 +140,7 @@
 
    "left" : {
 
-       "id" : " http://activitystrea.ms/schema/1.0/leave",
+       "id" : "http://activitystrea.ms/schema/1.0/leave",
 
        "display" : {"en-US" : "left"}
 
