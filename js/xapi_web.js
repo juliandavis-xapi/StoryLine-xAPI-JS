@@ -38,7 +38,13 @@ function sendxAPI(verb,activitytype,shortdesc,longdesc,showresult,completion,suc
   //Build Agent
 
   var name = 'User, Unknown'; //Set a dummy value just incase
-  name = SCORM2004_GetStudentName();    //try and get the student name from the SCORM object
+   try{
+    name = SCORM2004_GetStudentName();    //try and get the student name from the SCORM object
+  }catch(err){
+    name = SCORM_GetStudentName(); //try SCORM 1.2
+  }finally{
+    name = 'User, Unknown'; // set a default value
+  }
    
     
 var player = GetPlayer();
