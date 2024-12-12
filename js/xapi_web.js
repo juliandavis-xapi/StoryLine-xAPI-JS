@@ -43,10 +43,10 @@ function sendxAPI(verb,activitytype,shortdesc,longdesc,showresult,completion,suc
   }catch(err){
     name = SCORM_GetStudentName(); //try SCORM 1.2
   }finally{
-	   if(name ==""){
-    			name = 'User, Unknown'; // set a default value
-	   }
-	   }
+    if(name ==""){
+	name = 'User, Unknown'; // set a default value
+    }
+}
    
     
 var player = GetPlayer();
